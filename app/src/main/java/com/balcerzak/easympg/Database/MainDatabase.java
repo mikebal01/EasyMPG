@@ -9,16 +9,31 @@ public class MainDatabase extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "records.db";
-    private Context appContext;
 
-    public MainDatabase(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, DATABASE_NAME, factory, DATABASE_VERSION);
-        appContext = context;
+    public MainDatabase(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        final String queryTableRecords = "CREATE TABLE vehicle (_id INTEGER PRIMARY KEY, display_name TEXT, make TEXT, production_year INTEGER, modle TEXT, odometer INTEGER);";
+        db.execSQL("PRAGMA foreign_keys=ON");
+
+        final String createFueTypeTable = "CREATE TABLE fuel_type (fuel_type_code TEXT)";
+        db.execSQL(createFueTypeTable);
+
+        final String createDistanceUnitTypeTable = "CREATE TABLE distance_type (distance_type_code TEXT)";
+        db.execSQL(createDistanceUnitTypeTable);
+
+        final String queryTableRecords = "CREATE TABLE vehicle (_id INTEGER PRIMARY KEY," +
+                " display_name TEXT, " +
+                "make TEXT, " +
+                "production_year INTEGER," +
+                " model TEXT, " +
+                "odometer INTEGER," +
+                "distance_unit_type TEXT," +
+                "default_fuel_unit_type TEXT," +
+                "FOREIGN KEY (distance_unit_type) REFERENCES distance_type (distance_type_code)," +
+                "FOREIGN KEY (default_fuel_unit_type) REFERENCES fuel_type (fuel_type_code));";
         db.execSQL(queryTableRecords);
     }
 

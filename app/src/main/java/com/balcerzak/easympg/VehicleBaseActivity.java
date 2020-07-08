@@ -4,10 +4,14 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.EditText;
 
+import com.balcerzak.easympg.Units.DistanceUnits;
+import com.balcerzak.easympg.Units.FuelUnits;
+
 public class VehicleBaseActivity extends Activity {
 
     EditText _displayName, _make, _model, _year, _odometer;
-
+    DistanceUnits _distanceUnit;
+    FuelUnits _fuelUnit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
