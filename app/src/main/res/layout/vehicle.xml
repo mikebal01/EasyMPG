@@ -9,22 +9,23 @@
         android:id="@+id/editTextDisplayName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="73dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="35dp"
-        android:layout_marginBottom="651dp"
+        android:layout_marginBottom="137dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Display Name"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.433" />
 
     <EditText
         android:id="@+id/editTextmake"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="74dp"
-        android:layout_marginTop="111dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="76dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Make"
@@ -76,62 +77,67 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioButton
-        android:id="@+id/radioButtonDistanceKM"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="438dp"
-        android:text="KM"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="distanceRadioClick" />
-
-    <RadioButton
-        android:id="@+id/radioButtonDistanceMiles"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="71dp"
-        android:layout_marginTop="474dp"
-        android:layout_marginBottom="225dp"
-        android:text="Miles"
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="123dp"
+        android:layout_height="74dp"
+        android:layout_marginEnd="272dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="distanceRadioClick"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextOdometer"
+        app:layout_constraintVertical_bias="0.163">
 
-    <RadioButton
-        android:id="@+id/radioButtonLiters"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="71dp"
-        android:layout_marginTop="533dp"
-        android:text="Liters"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="fuelMeasurementRadioClick"/>
+        <RadioButton
+            android:id="@+id/radioButtonDistanceKM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="KM"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioButton
-        android:id="@+id/radioButtonUSGallon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="71dp"
-        android:layout_marginTop="565dp"
-        android:text="US Gallon"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="fuelMeasurementRadioClick"       />
+        <RadioButton
+            android:id="@+id/radioButtonDistanceMiles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Miles"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioButtonDistanceKM" />
 
-    <RadioButton
-        android:id="@+id/radioButtonImperialGallon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginBottom="105dp"
-        android:text="Imperial Gallon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:onClick="fuelMeasurementRadioClick"/>
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="165dp"
+        android:layout_height="225dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="228dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup2">
+
+        <RadioButton
+            android:id="@+id/radioButtonLiters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Liters"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioButton
+            android:id="@+id/radioButtonUSGallon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="US Gallon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioButton
+            android:id="@+id/radioButtonImperialGallon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Imperial Gallon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </RadioGroup>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

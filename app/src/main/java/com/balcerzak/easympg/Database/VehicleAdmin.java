@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import com.balcerzak.easympg.Units.DistanceUnits;
 import com.balcerzak.easympg.Units.FuelUnits;
-import com.balcerzak.easympg.VehicleInfoStruct;
+import com.balcerzak.easympg.Vehicle.VehicleInfoStruct;
 
 import java.util.ArrayList;
 

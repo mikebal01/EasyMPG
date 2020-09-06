@@ -1,4 +1,4 @@
-package com.balcerzak.easympg;
+package com.balcerzak.easympg.Vehicle;
 
 import com.balcerzak.easympg.Units.DistanceUnits;
 import com.balcerzak.easympg.Units.FuelUnits;
