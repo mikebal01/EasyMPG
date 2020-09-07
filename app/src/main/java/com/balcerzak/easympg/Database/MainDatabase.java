@@ -24,9 +24,9 @@ public class MainDatabase extends SQLiteOpenHelper {
         final String createDistanceUnitTypeTable = "CREATE TABLE distance_type (distance_type_code TEXT)";
         db.execSQL(createDistanceUnitTypeTable);
 
-        final String queryTableRecords = "CREATE TABLE vehicle (_id INTEGER PRIMARY KEY," +
-                " display_name TEXT, " +
-                "make TEXT, " +
+        final String queryTableVehicle = "CREATE TABLE vehicle (vehicle_id INTEGER PRIMARY KEY, " +
+                "display_name TEXT, " +
+                "cost_per_unit TEXT, " +
                 "production_year INTEGER," +
                 " model TEXT, " +
                 "odometer INTEGER," +
@@ -34,7 +34,17 @@ public class MainDatabase extends SQLiteOpenHelper {
                 "default_fuel_unit_type TEXT," +
                 "FOREIGN KEY (distance_unit_type) REFERENCES distance_type (distance_type_code)," +
                 "FOREIGN KEY (default_fuel_unit_type) REFERENCES fuel_type (fuel_type_code));";
-        db.execSQL(queryTableRecords);
+        db.execSQL(queryTableVehicle);
+
+        final String queryTableFillUp = "CREATE TABLE fillup (fill_up_id INTEGER PRIMARY KEY, " +
+                "date TEXT, " +
+                "odometer TEXT, " +
+                "total_cost INTEGER," +
+                "missed_previous_fillup INTEGER," +
+                "units_liters REAL," +
+                "vehicle_id INTEGER," +
+                "FOREIGN KEY (vehicle_id) REFERENCES vehicle (vehicle_id));";
+        db.execSQL(queryTableFillUp);
     }
 
     @Override
