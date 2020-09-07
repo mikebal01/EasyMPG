@@ -41,6 +41,7 @@ public class MainDatabase extends SQLiteOpenHelper {
                 "odometer TEXT, " +
                 "total_cost INTEGER," +
                 "missed_previous_fillup INTEGER," +
+                "partial_fillup INTEGER," +
                 "units_liters REAL," +
                 "vehicle_id INTEGER," +
                 "FOREIGN KEY (vehicle_id) REFERENCES vehicle (vehicle_id));";

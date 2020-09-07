@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Vehicle.AddVehicle"/>
+        <activity android:name=".Fillup.AddFillUp"/>
     </application>
 
 </manifest>
