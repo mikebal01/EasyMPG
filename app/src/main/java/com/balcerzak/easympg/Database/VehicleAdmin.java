@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class VehicleAdmin extends MainDatabase {
 
+    String VEHICLE_ID = "vehicle_id";
     String DISPLAY_NAME = "display_name";
     String ODOMETER = "odometer";
     String MAKE = "make";
@@ -40,13 +41,7 @@ public class VehicleAdmin extends MainDatabase {
         cursor.moveToFirst();
 
         while (!cursor.isAfterLast()) {
-            vehicleInfoStructs.add(new VehicleInfoStruct(cursor.getString(cursor.getColumnIndex(DISPLAY_NAME)),
-                    cursor.getInt(cursor.getColumnIndex(ODOMETER)),
-                    cursor.getInt(cursor.getColumnIndex(YEAR)),
-                    cursor.getString(cursor.getColumnIndex(MAKE)),
-                    cursor.getString(cursor.getColumnIndex(MODEL)),
-                    DistanceUnits.valueOf(cursor.getString(cursor.getColumnIndex(DISTANCE_UNIT))),
-                    FuelUnits.valueOf(cursor.getString(cursor.getColumnIndex(FUEL_MEASUREMENT_UNIT)))));
+            vehicleInfoStructs.add(createVehicleFromCursor(cursor));
             cursor.moveToNext();
         }
         cursor.close();
@@ -54,6 +49,13 @@ public class VehicleAdmin extends MainDatabase {
         return vehicleInfoStructs;
     }
 
+    public VehicleInfoStruct getVehicleById(int vehicleId){
+        SQLiteDatabase db = getReadableDatabase();
+        final String query = "SELECT * FROM vehicle WHERE " + VEHICLE_ID + " =" + vehicleId;
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.moveToFirst();
+        return createVehicleFromCursor(cursor);
+    }
     public void updateVehicle(VehicleInfoStruct vehicle){
 /*        ContentValues values = createContentValuesForVehicle(vehicle);
         SQLiteDatabase db = getWritableDatabase();
@@ -65,6 +67,20 @@ public class VehicleAdmin extends MainDatabase {
 /*        SQLiteDatabase db = getWritableDatabase();
         db.delete(RECORD_TABLE, RECORD_ID + "=?", new String[] {recordPK});
         db.close();*/
+    }
+
+    private VehicleInfoStruct createVehicleFromCursor(Cursor cursor){
+        VehicleInfoStruct vehicleInfoStruct = null;
+        if (!cursor.isAfterLast()) {
+            vehicleInfoStruct = new VehicleInfoStruct(cursor.getString(cursor.getColumnIndex(DISPLAY_NAME)),
+                    cursor.getInt(cursor.getColumnIndex(ODOMETER)),
+                    cursor.getInt(cursor.getColumnIndex(YEAR)),
+                    cursor.getString(cursor.getColumnIndex(MAKE)),
+                    cursor.getString(cursor.getColumnIndex(MODEL)),
+                    DistanceUnits.valueOf(cursor.getString(cursor.getColumnIndex(DISTANCE_UNIT))),
+                    FuelUnits.valueOf(cursor.getString(cursor.getColumnIndex(FUEL_MEASUREMENT_UNIT))));
+        }
+        return vehicleInfoStruct;
     }
 
     private ContentValues createContentValuesForVehicle(VehicleInfoStruct vehicle){

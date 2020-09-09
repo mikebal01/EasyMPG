@@ -3,8 +3,10 @@ package com.balcerzak.easympg;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.balcerzak.easympg.Database.VehicleAdmin;
 import com.balcerzak.easympg.Fillup.AddFillUp;
 import com.balcerzak.easympg.Vehicle.AddVehicle;
+import com.balcerzak.easympg.Vehicle.VehicleInfoStruct;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,8 +17,15 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
+    private ArrayList<VehicleInfoStruct> _vehicles = null;
+    private TextView _vehicleHeader;
+    private int _vehicleIndex = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +51,32 @@ public class MainActivity extends AppCompatActivity {
                 Intent openAddFillUp = new Intent(MainActivity.this, AddFillUp.class);
                 // open_AddRecords.putExtra("toAddToTable", String.valueOf(databaseTable));
                 startActivity(openAddFillUp);
+            }
+        });
+
+        VehicleAdmin vehicleAdmin = new VehicleAdmin(getApplicationContext());
+        Button _vehicleHeaderNext = findViewById(R.id.buttonVehicleHeaderNext);
+        _vehicles = vehicleAdmin.getVehicles();
+
+        if(_vehicles.isEmpty()){
+            _vehicleHeaderNext.setClickable(false);
+        }
+
+        _vehicleHeader = findViewById(R.id.textViewVehicleHeader);
+        if(!_vehicles.isEmpty()){
+            _vehicleHeader.setText(_vehicles.get(_vehicleIndex).getDisplayName());
+        }
+
+        _vehicleHeaderNext = findViewById(R.id.buttonVehicleHeaderNext);
+        _vehicleHeaderNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              if(_vehicleIndex < _vehicles.size() - 1){
+                    _vehicleIndex++;
+                } else {
+                    _vehicleIndex = 0;
+                }
+              _vehicleHeader.setText(_vehicles.get(_vehicleIndex).getDisplayName());
             }
         });
     }
