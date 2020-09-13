@@ -1,5 +1,6 @@
 package com.balcerzak.easympg.Database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -15,20 +16,30 @@ public class MainDatabase extends SQLiteOpenHelper {
     }
 
     @Override
+    public void onConfigure(SQLiteDatabase db) {
+        super.onConfigure(db);
+        db.setForeignKeyConstraintsEnabled(true);
+    }
+
+    @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("PRAGMA foreign_keys=ON");
-
-        final String createFueTypeTable = "CREATE TABLE fuel_type (fuel_type_code TEXT)";
+        final String createFueTypeTable = "CREATE TABLE fuel_type (fuel_type_code TEXT UNIQUE)";
         db.execSQL(createFueTypeTable);
+        db.execSQL("insert into fuel_type (fuel_type_code) values ('LITERS');");
+        db.execSQL("insert into fuel_type (fuel_type_code) values ('US_GALLON');");
+        db.execSQL("insert into fuel_type (fuel_type_code) values ('IMPERIAL_GALLON');");
 
-        final String createDistanceUnitTypeTable = "CREATE TABLE distance_type (distance_type_code TEXT)";
+        final String createDistanceUnitTypeTable = "CREATE TABLE distance_type (distance_type_code TEXT UNIQUE)";
         db.execSQL(createDistanceUnitTypeTable);
+        db.execSQL("insert into distance_type (distance_type_code) values ('KM');");
+        db.execSQL("insert into distance_type (distance_type_code) values ('MILES');");
 
-        final String queryTableVehicle = "CREATE TABLE vehicle (vehicle_id INTEGER PRIMARY KEY, " +
+        final String queryTableVehicle = "CREATE TABLE vehicle (vehicle_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "display_name TEXT, " +
                 "cost_per_unit TEXT, " +
                 "production_year INTEGER," +
-                " model TEXT, " +
+                "model TEXT, " +
+                "make TEXT, " +
                 "odometer INTEGER," +
                 "distance_unit_type TEXT," +
                 "default_fuel_unit_type TEXT," +
@@ -36,7 +47,7 @@ public class MainDatabase extends SQLiteOpenHelper {
                 "FOREIGN KEY (default_fuel_unit_type) REFERENCES fuel_type (fuel_type_code));";
         db.execSQL(queryTableVehicle);
 
-        final String queryTableFillUp = "CREATE TABLE fillup (fill_up_id INTEGER PRIMARY KEY, " +
+        final String queryTableFillUp = "CREATE TABLE fillup (fill_up_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "date TEXT, " +
                 "odometer TEXT, " +
                 "total_cost INTEGER," +

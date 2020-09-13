@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent openAddFillUp = new Intent(MainActivity.this, AddFillUp.class);
-                // open_AddRecords.putExtra("toAddToTable", String.valueOf(databaseTable));
+                openAddFillUp.putExtra("vehiclePK", _vehicles.get(_vehicleIndex).getVehiclePK());
                 startActivity(openAddFillUp);
             }
         });
@@ -67,16 +67,22 @@ public class MainActivity extends AppCompatActivity {
             _vehicleHeader.setText(_vehicles.get(_vehicleIndex).getDisplayName());
         }
 
+        if (_vehicles.size() == 0) {
+            _vehicleHeader.setText("Add Vehicle to get Started");
+        }
+
         _vehicleHeaderNext = findViewById(R.id.buttonVehicleHeaderNext);
         _vehicleHeaderNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              if(_vehicleIndex < _vehicles.size() - 1){
-                    _vehicleIndex++;
-                } else {
-                    _vehicleIndex = 0;
+                if (_vehicles.size() != 0) {
+                    if (_vehicleIndex < _vehicles.size() - 1) {
+                        _vehicleIndex++;
+                    } else {
+                        _vehicleIndex = 0;
+                    }
+                    _vehicleHeader.setText(_vehicles.get(_vehicleIndex).getDisplayName());
                 }
-              _vehicleHeader.setText(_vehicles.get(_vehicleIndex).getDisplayName());
             }
         });
     }

@@ -51,7 +51,7 @@ public class VehicleAdmin extends MainDatabase {
 
     public VehicleInfoStruct getVehicleById(int vehicleId){
         SQLiteDatabase db = getReadableDatabase();
-        final String query = "SELECT * FROM vehicle WHERE " + VEHICLE_ID + " =" + vehicleId;
+        final String query = "SELECT * FROM vehicle WHERE " + VEHICLE_ID + " = " + vehicleId;
         Cursor cursor = db.rawQuery(query, null);
         cursor.moveToFirst();
         return createVehicleFromCursor(cursor);
@@ -72,7 +72,8 @@ public class VehicleAdmin extends MainDatabase {
     private VehicleInfoStruct createVehicleFromCursor(Cursor cursor){
         VehicleInfoStruct vehicleInfoStruct = null;
         if (!cursor.isAfterLast()) {
-            vehicleInfoStruct = new VehicleInfoStruct(cursor.getString(cursor.getColumnIndex(DISPLAY_NAME)),
+            vehicleInfoStruct = new VehicleInfoStruct(
+                    cursor.getString(cursor.getColumnIndex(DISPLAY_NAME)),
                     cursor.getInt(cursor.getColumnIndex(ODOMETER)),
                     cursor.getInt(cursor.getColumnIndex(YEAR)),
                     cursor.getString(cursor.getColumnIndex(MAKE)),
