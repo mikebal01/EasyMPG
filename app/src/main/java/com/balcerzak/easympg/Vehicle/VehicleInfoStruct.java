@@ -14,7 +14,7 @@ public class VehicleInfoStruct {
     private DistanceUnits _distanceUnit;
     private FuelUnits _defaultFuelUnit;
 
-/*    public VehicleInfoStruct(int vehiclePK,
+    public VehicleInfoStruct(int vehiclePK,
                              String displayName,
                              int odometer,
                              int year,
@@ -30,7 +30,7 @@ public class VehicleInfoStruct {
         _model = model;
         _distanceUnit = distanceUnits;
         _defaultFuelUnit = fuelUnits;
-    }*/
+    }
 
     public VehicleInfoStruct(String displayName,
                              int odometer,

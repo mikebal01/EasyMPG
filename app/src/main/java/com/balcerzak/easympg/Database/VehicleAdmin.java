@@ -73,6 +73,7 @@ public class VehicleAdmin extends MainDatabase {
         VehicleInfoStruct vehicleInfoStruct = null;
         if (!cursor.isAfterLast()) {
             vehicleInfoStruct = new VehicleInfoStruct(
+                    cursor.getInt(cursor.getColumnIndex(VEHICLE_ID)),
                     cursor.getString(cursor.getColumnIndex(DISPLAY_NAME)),
                     cursor.getInt(cursor.getColumnIndex(ODOMETER)),
                     cursor.getInt(cursor.getColumnIndex(YEAR)),

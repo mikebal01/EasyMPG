@@ -2,6 +2,7 @@ package com.balcerzak.easympg.Fillup;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -45,7 +46,23 @@ public class FillUpBaseActivity extends Activity {
 
         VehicleAdmin vehicleAdmin = new VehicleAdmin(getApplicationContext());
         _vehicles = vehicleAdmin.getVehicles();
-        //TODO: FIND WHICH VEHICLE TO DISPLAY SO OTHER PROPERTIES CAN BE TRACKED
+        while (_vehicles.get(_vehicleIndex).getVehiclePK() != vehiclePk){
+            _vehicleIndex++;
+        }
+        _vehicleHeader.setText(_vehicles.get(_vehicleIndex).getDisplayName());
 
+        Button vehicleHeaderNext = findViewById(R.id.buttonAddFillUpNextVehicle);
+        vehicleHeaderNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!_vehicles.isEmpty()) {
+                    _vehicleIndex++;
+                    if (_vehicleIndex == _vehicles.size()) {
+                        _vehicleIndex = 0;
+                    }
+                    _vehicleHeader.setText(_vehicles.get(_vehicleIndex).getDisplayName());
+                }
+            }
+        });
     }
 }
