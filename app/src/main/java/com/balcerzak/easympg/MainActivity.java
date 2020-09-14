@@ -38,9 +38,9 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent open_AddRecords = new Intent(MainActivity.this, AddVehicle.class);
-               // open_AddRecords.putExtra("toAddToTable", String.valueOf(databaseTable));
-                startActivity(open_AddRecords);
+                Intent openAddVehicle = new Intent(MainActivity.this, AddVehicle.class);
+                //openAddVehicle.putExtra("vehiclePK", _vehicles.get(_vehicleIndex).getVehiclePK());
+                startActivity(openAddVehicle);
             }
         });
 
@@ -54,37 +54,43 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        VehicleAdmin vehicleAdmin = new VehicleAdmin(getApplicationContext());
-        Button _vehicleHeaderNext = findViewById(R.id.buttonVehicleHeaderNext);
-        _vehicles = vehicleAdmin.getVehicles();
-
-        if(_vehicles.isEmpty()){
-            _vehicleHeaderNext.setClickable(false);
-        }
-
-        _vehicleHeader = findViewById(R.id.textViewVehicleHeader);
-        if(!_vehicles.isEmpty()){
-            _vehicleHeader.setText(_vehicles.get(_vehicleIndex).getDisplayName());
-        }
-
-        if (_vehicles.size() == 0) {
-            _vehicleHeader.setText("Add Vehicle to get Started");
-        }
-
-        _vehicleHeaderNext = findViewById(R.id.buttonVehicleHeaderNext);
-        _vehicleHeaderNext.setOnClickListener(new View.OnClickListener() {
+        setupVehicleHeader();
+        Button vehicleHeaderNext = findViewById(R.id.buttonVehicleHeaderNext);
+        vehicleHeaderNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (_vehicles.size() != 0) {
-                    if (_vehicleIndex < _vehicles.size() - 1) {
-                        _vehicleIndex++;
-                    } else {
+                if (!_vehicles.isEmpty()) {
+                    _vehicleIndex++;
+                    if (_vehicleIndex == _vehicles.size()) {
                         _vehicleIndex = 0;
                     }
                     _vehicleHeader.setText(_vehicles.get(_vehicleIndex).getDisplayName());
                 }
             }
         });
+    }
+    private void setupVehicleHeader(){
+        VehicleAdmin vehicleAdmin = new VehicleAdmin(getApplicationContext());
+        Button _vehicleHeaderNext = findViewById(R.id.buttonVehicleHeaderNext);
+        _vehicles = vehicleAdmin.getVehicles();
+        _vehicleHeader = findViewById(R.id.textViewVehicleHeader);
+
+        if(_vehicles.isEmpty()){
+            _vehicleHeaderNext.setClickable(false);
+        }else{
+            _vehicleHeader.setText(_vehicles.get(_vehicleIndex).getDisplayName());
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        VehicleAdmin vehicleAdmin = new VehicleAdmin(getApplicationContext());
+        _vehicles = vehicleAdmin.getVehicles();
+        if(!_vehicles.isEmpty()){
+            _vehicleHeader.setText("Add Vehicle to get Started");
+            _vehicleHeader.setText(_vehicles.get(_vehicleIndex).getDisplayName());
+        }
     }
 
     @Override

@@ -43,8 +43,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate"
-        app:layout_constraintVertical_bias="0.032" />
+        app:layout_constraintTop_toTopOf="@+id/textViewAddFillupVehicleHeader"
+        app:layout_constraintVertical_bias="0.211" />
 
     <EditText
         android:id="@+id/editTextNumberDecimal"
@@ -170,7 +170,7 @@
         app:layout_constraintVertical_bias="0.01" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewAddFillupVehicleHeader"
         android:layout_width="216dp"
         android:layout_height="34dp"
         android:layout_marginTop="20dp"

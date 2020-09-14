@@ -1,56 +1,51 @@
 package com.balcerzak.easympg.Fillup;
 
 import android.app.Activity;
-import android.app.DatePickerDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 import com.balcerzak.easympg.Database.VehicleAdmin;
 import com.balcerzak.easympg.R;
-import com.balcerzak.easympg.Units.DistanceUnits;
-import com.balcerzak.easympg.Units.FuelUnits;
 import com.balcerzak.easympg.Vehicle.VehicleInfoStruct;
 
-import java.util.Calendar;
-import java.util.Date;
+import java.util.ArrayList;
 
 public class FillUpBaseActivity extends Activity {
 
     EditText _displayName, _make, _model, _year, _odometer;
     RadioButton _km, _mile, _liters, _usGallons, _imperialGallons;
-    private int _vehiclePK = -1;
+    private ArrayList<VehicleInfoStruct> _vehicles = null;
+    private TextView _vehicleHeader;
+    private int _vehicleIndex = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addfillup);
-        setupVariables();
+        int vehiclePK = -1;
 
-        String newString;
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
-            if(extras == null) {
-                _vehiclePK = -1;
-            } else {
-                _vehiclePK = extras.getInt("vehiclePK");
+            if(extras != null) {
+                vehiclePK = extras.getInt("vehiclePK");
             }
         }
-
-        if(_vehiclePK != -1){
-            VehicleAdmin vehicleAdmin = new VehicleAdmin(getApplicationContext());
-            VehicleInfoStruct vehicleById = vehicleAdmin.getVehicleById(_vehiclePK);
-            int i = 1;
-        }
+        setupVariables(vehiclePK);
     }
     @Override
     public void onResume(){
         super.onResume();
     }
 
-    private void setupVariables() {
+    private void setupVariables(int vehiclePk) {
         Button dateSelector = findViewById(R.id.buttonEditDate);
+        _vehicleHeader = findViewById(R.id.textViewAddFillupVehicleHeader);
+
+        VehicleAdmin vehicleAdmin = new VehicleAdmin(getApplicationContext());
+        _vehicles = vehicleAdmin.getVehicles();
+        //TODO: FIND WHICH VEHICLE TO DISPLAY SO OTHER PROPERTIES CAN BE TRACKED
+
     }
 }
