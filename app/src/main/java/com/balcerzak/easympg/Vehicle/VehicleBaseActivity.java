@@ -32,9 +32,9 @@ public class VehicleBaseActivity extends Activity {
         _odometer = findViewById(R.id.editTextOdometer);
         _km = findViewById(R.id.radioButtonDistanceKM);
         _mile = findViewById(R.id.radioButtonDistanceMiles);
-        _liters = findViewById(R.id.radioButtonLiters);
-        _usGallons = findViewById(R.id.radioButtonUSGallon);
-        _imperialGallons = findViewById(R.id.radioButtonImperialGallon);
+        _liters = findViewById(R.id.radioButtonFillupLiters);
+        _usGallons = findViewById(R.id.radioButtonFillUpUSGallon);
+        _imperialGallons = findViewById(R.id.radioButtonFillUpImperialGallon);
     }
 
     FuelUnits getFuelUnit(){
