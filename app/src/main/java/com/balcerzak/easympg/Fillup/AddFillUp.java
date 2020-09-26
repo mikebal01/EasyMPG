@@ -1,23 +1,44 @@
 package com.balcerzak.easympg.Fillup;
 
 import android.content.res.Resources;
+import android.view.View;
 
 import com.balcerzak.easympg.Converter.FuelUnitConverter;
+import com.balcerzak.easympg.Database.FillUpAdmin;
 import com.balcerzak.easympg.Units.FuelUnits;
 import com.balcerzak.easympg.Vehicle.VehicleInfoStruct;
 
 public class AddFillUp extends FillUpBaseActivity {
 
-    public void addFillUpClicked(){
+    public void addFillUpClicked(View v){
         final VehicleInfoStruct currentlySelectedVehicle = getCurrentlySelectedVehicle();
+        final double fuelUnitsInVehicleDefault = getFuelUnitsInVehicleDefault(currentlySelectedVehicle);
+        final FuelUnits selectedFuelUnit = getSelectedFuelUnit();
+        final boolean isMissedPreviousFillUpChecked = _missedPreviousFillUp.isChecked();
+        final boolean isPartialFillUp = _partialFillUp.isChecked();
+        final double totalCost = Double.parseDouble(_totalCost.getText().toString());
+        final int odometer = Integer.parseInt(_odometer.getText().toString());
+        final String date = _dateSelector.getText().toString();
 
+        FillUpInfoStruct fillUpInfoStruct = new FillUpInfoStruct(currentlySelectedVehicle.getVehiclePK(),
+                odometer,
+                totalCost,
+                fuelUnitsInVehicleDefault,
+                isMissedPreviousFillUpChecked,
+                isPartialFillUp,
+                selectedFuelUnit,
+                date);
+
+        FillUpAdmin fillUpAdmin = new FillUpAdmin(getApplicationContext());
+        fillUpAdmin.addFillUp(fillUpInfoStruct);
+        fillUpAdmin.getFillUpsForVehicle(currentlySelectedVehicle.getVehiclePK());
     }
 
     private double getFuelUnitsInVehicleDefault(VehicleInfoStruct currentlySelectedVehicle){
         FuelUnits selectedFuelUnit = getSelectedFuelUnit();
         double units = Double.parseDouble(_units.getText().toString());
         if(selectedFuelUnit != currentlySelectedVehicle.getDefaultFuelUnit()){
-            convertFuelUnitToDefault(selectedFuelUnit, currentlySelectedVehicle.getDefaultFuelUnit(), units);
+            units = convertFuelUnitToDefault(selectedFuelUnit, currentlySelectedVehicle.getDefaultFuelUnit(), units);
         }
         return units;
     }
@@ -45,5 +66,4 @@ public class AddFillUp extends FillUpBaseActivity {
             throw new Resources.NotFoundException("NO KNOWN FUEL UNIT CONVERSION");
         }
     }
-
 }

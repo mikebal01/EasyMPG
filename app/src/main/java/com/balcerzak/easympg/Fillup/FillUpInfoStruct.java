@@ -1,6 +1,5 @@
 package com.balcerzak.easympg.Fillup;
 
-import com.balcerzak.easympg.Units.DistanceUnits;
 import com.balcerzak.easympg.Units.FuelUnits;
 
 public class FillUpInfoStruct {
@@ -9,17 +8,26 @@ public class FillUpInfoStruct {
     private double _totalCost;
     private boolean _missedPreviousFillUp;
     private boolean _partialFillUp;
-    private double _unitsLiters;
+    private double _unitsInDefault;
+    private FuelUnits _fillUpFuelUnits;
+    private String _fillUpDate;
 
     public FillUpInfoStruct(int vehicleId,
                             int odometer,
-                            int year,
-                            String make,
-                            String model,
-                            DistanceUnits distanceUnits,
+                            double totalCost,
+                            double units,
+                            boolean isMissedPreviousFillUpChecked,
+                            boolean isPartialFillUpChecked,
                             FuelUnits fuelUnits,
-                            boolean missedPreviousFillUp,
-                            boolean isPartialFillUp){
+                            String fillUpDate){
+        _vehicleId = vehicleId;
+        _odometer = odometer;
+        _totalCost = totalCost;
+        _unitsInDefault = units;
+        _missedPreviousFillUp = isMissedPreviousFillUpChecked;
+        _partialFillUp = isPartialFillUpChecked;
+        _fillUpFuelUnits = fuelUnits;
+        _fillUpDate = fillUpDate;
     }
 
     public int getVehicleId() {
@@ -42,8 +50,15 @@ public class FillUpInfoStruct {
         return _partialFillUp;
     }
 
-    public double getUnitsLiters() {
-        return _unitsLiters;
+    public double getUnitsInDefault() {
+        return _unitsInDefault;
     }
 
+    public FuelUnits getFillUpFuelUnits() {
+        return _fillUpFuelUnits;
+    }
+
+    public String getFillUpDate() {
+        return _fillUpDate;
+    }
 }

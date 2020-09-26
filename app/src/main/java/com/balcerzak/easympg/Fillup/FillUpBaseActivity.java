@@ -24,6 +24,7 @@ public class FillUpBaseActivity extends Activity {
     private ArrayList<VehicleInfoStruct> _vehicles = null;
     private TextView _vehicleHeader;
     private int _vehicleIndex = 0;
+    Button _dateSelector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +51,9 @@ public class FillUpBaseActivity extends Activity {
     }
 
     private void setupUIVariables() {
-        Button dateSelector = findViewById(R.id.buttonAddFillupDate);
+        _dateSelector = findViewById(R.id.buttonAddFillupDate);
         _vehicleHeader = findViewById(R.id.textViewAddFillupVehicleHeader);
-        _odometer = findViewById(R.id.editTextOdometer);
+        _odometer = findViewById(R.id.editTextAddFillUpOdometer);
         _units = findViewById(R.id.editTextAddFillUpUnit);
         _totalCost = findViewById(R.id.editTextTotalCost);
         _costPerUnit = findViewById(R.id.editTextAddFillupCostPerUnit);

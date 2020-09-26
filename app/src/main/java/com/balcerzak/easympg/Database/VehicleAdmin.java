@@ -12,14 +12,14 @@ import java.util.ArrayList;
 
 public class VehicleAdmin extends MainDatabase {
 
-    String VEHICLE_ID = "vehicle_id";
-    String DISPLAY_NAME = "display_name";
-    String ODOMETER = "odometer";
-    String MAKE = "make";
-    String MODEL = "model";
-    String YEAR = "production_year";
-    String DISTANCE_UNIT = "distance_unit_type";
-    String FUEL_MEASUREMENT_UNIT = "default_fuel_unit_type";
+    final String VEHICLE_ID = "vehicle_id";
+    final String DISPLAY_NAME = "display_name";
+    final String ODOMETER = "odometer";
+    final String MAKE = "make";
+    final String MODEL = "model";
+    final String YEAR = "production_year";
+    final String DISTANCE_UNIT = "distance_unit_type";
+    final String FUEL_MEASUREMENT_UNIT = "default_fuel_unit_type";
 
     public VehicleAdmin(Context context) {
         super(context);

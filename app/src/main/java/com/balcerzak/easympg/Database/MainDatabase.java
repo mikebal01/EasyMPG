@@ -52,9 +52,11 @@ public class MainDatabase extends SQLiteOpenHelper {
                 "total_cost INTEGER," +
                 "missed_previous_fillup INTEGER," +
                 "partial_fillup INTEGER," +
-                "units_liters REAL," +
+                "units REAL," +
                 "vehicle_id INTEGER," +
-                "FOREIGN KEY (vehicle_id) REFERENCES vehicle (vehicle_id));";
+                "selected_fuel_unit_type TEXT," +
+                "FOREIGN KEY (vehicle_id) REFERENCES vehicle (vehicle_id)," +
+                "FOREIGN KEY (selected_fuel_unit_type) REFERENCES fuel_type (fuel_type_code));";
         db.execSQL(queryTableFillUp);
     }
 
