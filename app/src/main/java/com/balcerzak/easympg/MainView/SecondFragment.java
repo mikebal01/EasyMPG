@@ -1,4 +1,4 @@
-package com.balcerzak.easympg;
+package com.balcerzak.easympg.MainView;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+
+import com.balcerzak.easympg.R;
 
 public class SecondFragment extends Fragment {
 

@@ -6,11 +6,8 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.balcerzak.easympg.Database.MainDatabase;
 import com.balcerzak.easympg.Fillup.FillUpInfoStruct;
-import com.balcerzak.easympg.Units.DistanceUnits;
 import com.balcerzak.easympg.Units.FuelUnits;
-import com.balcerzak.easympg.Vehicle.VehicleInfoStruct;
 
 import java.util.ArrayList;
 
@@ -87,5 +84,38 @@ public class FillUpAdmin extends MainDatabase {
         } else {
             throw new SQLException("VALUE (" + value + ") COULD NOT BE CONVERTED TO A BOOLEAN");
         }
+    }
+
+    public double getTotalCostForVehicle(int vehicleId){
+        final String query = "SELECT SUM(" + TOTAL_COST +") FROM fillup WHERE " + VEHICLE_ID + " = " + vehicleId;
+        return executeStatisticalQueryDouble(query);
+    }
+
+    public int getFillUpCount(int vehicleId){
+        final String query = "SELECT COUNT(*) FROM fillup WHERE " + VEHICLE_ID + " = " + vehicleId;
+        return executeStatisticalQueryInt(query);
+    }
+
+    public double getAverageFillPrice(int vehicleId){
+        final String query = "SELECT COUNT(*) FROM fillup WHERE " + VEHICLE_ID + " = " + vehicleId;
+        return executeStatisticalQueryDouble(query);
+    }
+
+    private double executeStatisticalQueryDouble(final String query){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.moveToFirst();
+        double count = cursor.getDouble(0);
+        cursor.close();
+        return count;
+    }
+
+    private int executeStatisticalQueryInt(final String query){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.moveToFirst();
+        int count = cursor.getInt(0);
+        cursor.close();
+        return count;
     }
 }

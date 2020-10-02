@@ -31,7 +31,7 @@ public class AddFillUp extends FillUpBaseActivity {
 
         FillUpAdmin fillUpAdmin = new FillUpAdmin(getApplicationContext());
         fillUpAdmin.addFillUp(fillUpInfoStruct);
-        fillUpAdmin.getFillUpsForVehicle(currentlySelectedVehicle.getVehiclePK());
+        finish();
     }
 
     private double getFuelUnitsInVehicleDefault(VehicleInfoStruct currentlySelectedVehicle){

@@ -1,10 +1,11 @@
-package com.balcerzak.easympg;
+package com.balcerzak.easympg.MainView;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.balcerzak.easympg.Database.VehicleAdmin;
 import com.balcerzak.easympg.Fillup.AddFillUp;
+import com.balcerzak.easympg.R;
 import com.balcerzak.easympg.Vehicle.AddVehicle;
 import com.balcerzak.easympg.Vehicle.VehicleInfoStruct;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -48,9 +49,11 @@ public class MainActivity extends AppCompatActivity {
         addFillUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent openAddFillUp = new Intent(MainActivity.this, AddFillUp.class);
-                openAddFillUp.putExtra("vehiclePK", _vehicles.get(_vehicleIndex).getVehiclePK());
-                startActivity(openAddFillUp);
+                if(getVehiclePk() != -1) {
+                    Intent openAddFillUp = new Intent(MainActivity.this, AddFillUp.class);
+                    openAddFillUp.putExtra("vehiclePK", _vehicles.get(_vehicleIndex).getVehiclePK());
+                    startActivity(openAddFillUp);
+                }
             }
         });
 
@@ -77,9 +80,10 @@ public class MainActivity extends AppCompatActivity {
 
         if(_vehicles.isEmpty()){
             _vehicleHeaderNext.setClickable(false);
+            _vehicleHeader.setText("Add Vehicle to get Started");
         }else{
             _vehicleHeader.setText(_vehicles.get(_vehicleIndex).getDisplayName());
-        }
+            }
     }
 
     @Override
@@ -87,10 +91,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         VehicleAdmin vehicleAdmin = new VehicleAdmin(getApplicationContext());
         _vehicles = vehicleAdmin.getVehicles();
-        if(!_vehicles.isEmpty()){
-            _vehicleHeader.setText("Add Vehicle to get Started");
-            _vehicleHeader.setText(_vehicles.get(_vehicleIndex).getDisplayName());
-        }
+        setupVehicleHeader();
     }
 
     @Override
@@ -113,5 +114,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    int getVehiclePk(){
+        if(_vehicles.size() == 0){
+            return -1;
+        }
+        return _vehicles.get(_vehicleIndex).getVehiclePK();
     }
 }
