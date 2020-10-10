@@ -2,9 +2,12 @@ package com.balcerzak.easympg.Fillup;
 
 import android.content.res.Resources;
 import android.view.View;
+import android.widget.TextView;
 
 import com.balcerzak.easympg.Converter.FuelUnitConverter;
 import com.balcerzak.easympg.Database.FillUpAdmin;
+import com.balcerzak.easympg.Database.VehicleAdmin;
+import com.balcerzak.easympg.R;
 import com.balcerzak.easympg.Units.FuelUnits;
 import com.balcerzak.easympg.Vehicle.VehicleInfoStruct;
 
@@ -20,18 +23,24 @@ public class AddFillUp extends FillUpBaseActivity {
         final int odometer = Integer.parseInt(_odometer.getText().toString());
         final String date = _dateSelector.getText().toString();
 
-        FillUpInfoStruct fillUpInfoStruct = new FillUpInfoStruct(currentlySelectedVehicle.getVehiclePK(),
-                odometer,
-                totalCost,
-                fuelUnitsInVehicleDefault,
-                isMissedPreviousFillUpChecked,
-                isPartialFillUp,
-                selectedFuelUnit,
-                date);
+        if(isOdometerValueLowerThenPrevious(currentlySelectedVehicle.getVehiclePK(), odometer))
+        {
+            TextView odometerWarning = findViewById(R.id.textViewAddFillUpOdometerWarning);
+            odometerWarning.setVisibility(View.VISIBLE);
+        } else {
+            FillUpInfoStruct fillUpInfoStruct = new FillUpInfoStruct(currentlySelectedVehicle.getVehiclePK(),
+                    odometer,
+                    totalCost,
+                    fuelUnitsInVehicleDefault,
+                    isMissedPreviousFillUpChecked,
+                    isPartialFillUp,
+                    selectedFuelUnit,
+                    date);
 
-        FillUpAdmin fillUpAdmin = new FillUpAdmin(getApplicationContext());
-        fillUpAdmin.addFillUp(fillUpInfoStruct);
-        finish();
+            FillUpAdmin fillUpAdmin = new FillUpAdmin(getApplicationContext());
+            fillUpAdmin.addFillUp(fillUpInfoStruct);
+            finish();
+        }
     }
 
     private double getFuelUnitsInVehicleDefault(VehicleInfoStruct currentlySelectedVehicle){
@@ -65,5 +74,12 @@ public class AddFillUp extends FillUpBaseActivity {
         } else{
             throw new Resources.NotFoundException("NO KNOWN FUEL UNIT CONVERSION");
         }
+    }
+
+    private boolean isOdometerValueLowerThenPrevious(int vehiclePk, int currentOdometer){
+        FillUpAdmin fillUpAdmin = new FillUpAdmin(getApplicationContext());
+        VehicleAdmin vehicleAdmin = new VehicleAdmin(getApplicationContext());
+        return (currentOdometer < ((fillUpAdmin.getMaxOdometer(vehiclePk) > 0) ? fillUpAdmin.getMaxOdometer(vehiclePk)
+                : vehicleAdmin.getVehicleById(vehiclePk).getOdometer()));
     }
 }

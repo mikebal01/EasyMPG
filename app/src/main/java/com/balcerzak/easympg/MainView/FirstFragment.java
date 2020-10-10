@@ -46,13 +46,20 @@ public class FirstFragment extends Fragment{
     }
 
     private void populateUI(){
-        VehicleStatsRetriever vehicleStatsRetriever = new VehicleStatsRetriever(getContext());
+        VehicleStatsRetriever vehicleStatsRetriever = new VehicleStatsRetriever(getContext(), _vehicleID);
         TextView totalCost = Objects.requireNonNull(getView()).findViewById(R.id.textViewCostVariable);
-        totalCost.setText(String.valueOf(vehicleStatsRetriever.getTotalCost(_vehicleID)));
+        totalCost.setText(String.valueOf(vehicleStatsRetriever.getTotalCost()));
         TextView fillCount = getView().findViewById(R.id.textViewFillCount);
-        fillCount.setText(String.valueOf(vehicleStatsRetriever.getFillCount(_vehicleID)));
+        fillCount.setText(String.valueOf(vehicleStatsRetriever.getFillCount()));
         TextView averageCost = getView().findViewById(R.id.textViewAverageCost);
-        averageCost.setText(String.valueOf(vehicleStatsRetriever.getAverageFillPrice(_vehicleID)));
+        averageCost.setText(String.valueOf(vehicleStatsRetriever.getAverageFillPrice()));
+        TextView averageMPG = getView().findViewById(R.id.textViewAverageMPG);
+        vehicleStatsRetriever.calculateFuelStatsForVehicle();
+        averageMPG.setText(String.valueOf(vehicleStatsRetriever.getAverageMPG()));
+        TextView bestMPG = getView().findViewById(R.id.textViewBestMPG);
+        bestMPG.setText(String.valueOf(vehicleStatsRetriever.getBestMPG()));
+        TextView worstMPG = getView().findViewById(R.id.textViewWorstMPG);
+        worstMPG.setText(String.valueOf(vehicleStatsRetriever.getWorstMPG()));
     }
 
     @Override

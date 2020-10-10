@@ -96,4 +96,5 @@ public class VehicleAdmin extends MainDatabase {
         values.put(FUEL_MEASUREMENT_UNIT, vehicle.getDefaultFuelUnit().toString());
         return values;
     }
+
 }

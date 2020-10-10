@@ -48,16 +48,8 @@ public class FillUpAdmin extends MainDatabase {
     }
 
     public ArrayList<FillUpInfoStruct> getFillUpsForVehicle(final int vehicleId){
-        ArrayList<FillUpInfoStruct> fillUps = new ArrayList<>();
-        SQLiteDatabase db = getReadableDatabase();
-        final String query = "SELECT * FROM fillup WHERE " + VEHICLE_ID + " = " + vehicleId;
-        Cursor cursor = db.rawQuery(query, null);
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            fillUps.add(createFillUpFromCursor(cursor));
-            cursor.moveToNext();
-        }
-        return fillUps;
+        final String query = "SELECT * FROM fillup WHERE " + VEHICLE_ID + " = " + vehicleId + " ORDER BY fill_up_id DESC";
+        return getFillUpsByQuery(query);
     }
 
     private FillUpInfoStruct createFillUpFromCursor(Cursor cursor){
@@ -86,6 +78,11 @@ public class FillUpAdmin extends MainDatabase {
         }
     }
 
+    public int getMaxOdometer(int vehicleId){
+        final String query = "SELECT MAX(odometer) FROM fillup WHERE " + VEHICLE_ID + " = " + vehicleId;
+        return executeStatisticalQueryInt(query);
+    }
+
     public double getTotalCostForVehicle(int vehicleId){
         final String query = "SELECT SUM(" + TOTAL_COST +") FROM fillup WHERE " + VEHICLE_ID + " = " + vehicleId;
         return executeStatisticalQueryDouble(query);
@@ -101,21 +98,16 @@ public class FillUpAdmin extends MainDatabase {
         return executeStatisticalQueryDouble(query);
     }
 
-    private double executeStatisticalQueryDouble(final String query){
+    @org.jetbrains.annotations.NotNull
+    private ArrayList<FillUpInfoStruct> getFillUpsByQuery(final String query){
+        ArrayList<FillUpInfoStruct> fillUps = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         cursor.moveToFirst();
-        double count = cursor.getDouble(0);
-        cursor.close();
-        return count;
-    }
-
-    private int executeStatisticalQueryInt(final String query){
-        SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery(query, null);
-        cursor.moveToFirst();
-        int count = cursor.getInt(0);
-        cursor.close();
-        return count;
+        while (!cursor.isAfterLast()) {
+            fillUps.add(createFillUpFromCursor(cursor));
+            cursor.moveToNext();
+        }
+        return fillUps;
     }
 }

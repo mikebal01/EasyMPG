@@ -1,6 +1,7 @@
 package com.balcerzak.easympg.Database;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -66,6 +67,24 @@ public class MainDatabase extends SQLiteOpenHelper {
 //            db.execSQL("ALTER TABLE records ADD COLUMN notes TEXT");
         }
 
+    }
+
+    double executeStatisticalQueryDouble(final String query){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.moveToFirst();
+        double count = cursor.getDouble(0);
+        cursor.close();
+        return count;
+    }
+
+    int executeStatisticalQueryInt(final String query){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.moveToFirst();
+        int count = cursor.getInt(0);
+        cursor.close();
+        return count;
     }
 
 }
