@@ -1,143 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <EditText
-        android:id="@+id/editTextDisplayName"
-        android:layout_width="wrap_content"
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginBottom="137dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Display Name"
-        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.433" />
+        android:isScrollContainer="true"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/editTextmake"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="76dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Make"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextModel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="77dp"
-        android:layout_marginTop="185dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Model"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextYear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="81dp"
-        android:layout_marginTop="272dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextOdometer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="81dp"
-        android:layout_marginTop="343dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/buttonSaveVehicle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="216dp"
-        android:layout_marginTop="516dp"
-        android:onClick="saveVehicleClicked"
-        android:text="Save"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup2"
-        android:layout_width="123dp"
-        android:layout_height="74dp"
-        android:layout_marginEnd="272dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextOdometer"
-        app:layout_constraintVertical_bias="0.163">
-
-        <RadioButton
-            android:id="@+id/radioButtonDistanceKM"
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="KM"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <RadioButton
-            android:id="@+id/radioButtonDistanceMiles"
-            android:layout_width="wrap_content"
+            android:text="@string/display_name"
+            android:paddingTop="50dp"
+            android:layout_marginStart="50dp"
+            android:textColor="@color/colorAccent"/>
+        <EditText
+            android:id="@+id/editTextDisplayName"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="Miles"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioButtonDistanceKM" />
+            android:layout_gravity="center_horizontal"
+            android:inputType="textPersonName"
+            android:hint="@string/crushinator"
+            android:autofillHints="" />
 
-    </RadioGroup>
-
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="165dp"
-        android:layout_height="225dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="228dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup2">
-
-        <RadioButton
-            android:id="@+id/radioButtonFillupLiters"
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Liters"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="@string/make"
+            android:paddingTop="25dp"
+            android:layout_marginStart="50dp"
+            android:textColor="@color/colorAccent"/>
 
-        <RadioButton
-            android:id="@+id/radioButtonFillUpUSGallon"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/editTextmake"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="US Gallon"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_gravity="center_horizontal"
+            android:inputType="textPersonName"
+            android:hint="@string/toyota"
+            android:autofillHints="" />
 
-        <RadioButton
-            android:id="@+id/radioButtonFillUpImperialGallon"
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Imperial Gallon"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-    </RadioGroup>
+            android:text="@string/model"
+            android:paddingTop="25dp"
+            android:layout_marginStart="50dp"
+            android:textColor="@color/colorAccent"/>
 
+        <EditText
+            android:id="@+id/editTextModel"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:inputType="textPersonName"
+            android:hint="@string/_6sprinter"
+            android:autofillHints="" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/production_year"
+            android:paddingTop="25dp"
+            android:layout_marginStart="50dp"
+            android:textColor="@color/colorAccent"/>
+
+        <EditText
+            android:id="@+id/editTextYear"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:inputType="number"
+            android:hint="@string/_2020"
+            android:autofillHints="" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/current_odometer"
+            android:paddingTop="25dp"
+            android:layout_marginStart="50dp"
+            android:textColor="@color/colorAccent"/>
+
+        <EditText
+            android:id="@+id/editTextOdometer"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:inputType="number"
+            android:hint="@string/_100000"
+            android:autofillHints="" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/odometer_units"
+            android:paddingTop="25dp"
+            android:layout_marginStart="50dp"
+            android:textColor="@color/colorAccent"/>
+        <RadioGroup
+            android:id="@+id/radioGroup2"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <RadioButton
+                android:id="@+id/radioButtonDistanceKM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/km" />
+
+            <RadioButton
+                android:id="@+id/radioButtonDistanceMiles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/miles" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/default_fill_up_units"
+            android:paddingTop="25dp"
+            android:layout_marginStart="50dp"
+            android:textColor="@color/colorAccent"/>
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <RadioButton
+                android:id="@+id/radioButtonFillupLiters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/liters" />
+
+            <RadioButton
+                android:id="@+id/radioButtonFillUpUSGallon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/us_gallon" />
+
+            <RadioButton
+                android:id="@+id/radioButtonFillUpImperialGallon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/imperial_gallon" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/buttonSaveVehicle"
+            android:onClick="saveVehicleClicked"
+            android:text="@string/add_vehicle"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:background="@drawable/button_shape"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"/>
+    </LinearLayout>
+</ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

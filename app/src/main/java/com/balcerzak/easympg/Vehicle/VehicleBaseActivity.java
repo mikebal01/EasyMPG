@@ -2,6 +2,7 @@ package com.balcerzak.easympg.Vehicle;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
@@ -55,4 +56,6 @@ public class VehicleBaseActivity extends Activity {
         }
     }
 
+    public void saveVehicleClicked(View view) {
+    }
 }

@@ -2,6 +2,8 @@ package com.balcerzak.easympg.Fillup;
 
 import android.content.res.Resources;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.balcerzak.easympg.Converter.FuelUnitConverter;
@@ -40,6 +42,17 @@ public class AddFillUp extends FillUpBaseActivity {
             FillUpAdmin fillUpAdmin = new FillUpAdmin(getApplicationContext());
             fillUpAdmin.addFillUp(fillUpInfoStruct);
             finish();
+        }
+    }
+
+    public void fillUpInDifferentUnitClicked(View v){
+        RadioGroup radioButtons = findViewById(R.id.radioGroupFillUpFuelUnits);
+        CheckBox checkBox = findViewById(v.getId());
+        if(checkBox.isChecked()){
+            radioButtons.setVisibility(View.VISIBLE);
+        } else{
+            radioButtons.setVisibility(View.GONE);
+            radioButtons.clearCheck();
         }
     }
 

@@ -9,4 +9,22 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="display_name">Display Name</string>
+    <string name="toyota">Toyota</string>
+    <string name="make">Make</string>
+    <string name="crushinator">Crushinator</string>
+    <string name="model">Model</string>
+    <string name="production_year">Production Year</string>
+    <string name="current_odometer">Current Odometer</string>
+    <string name="_6sprinter">6Sprinter</string>
+    <string name="_2020">2020</string>
+    <string name="_100000">100000</string>
+    <string name="odometer_units">Odometer Units</string>
+    <string name="km">KM</string>
+    <string name="miles">Miles</string>
+    <string name="default_fill_up_units">Default Fill Up Units</string>
+    <string name="liters">Liters</string>
+    <string name="us_gallon">US Gallon</string>
+    <string name="imperial_gallon">Imperial Gallon</string>
+    <string name="add_vehicle">Add Vehicle</string>
 </resources>
