@@ -77,5 +77,9 @@ public class VehicleInfoStruct {
     }
 
     public int getVehiclePK() { return _vehiclePK; }
+
+    public void setDefaultDisplayName(){
+        _displayName = _year + " " +_make + " " + _model;
+    }
 }
 

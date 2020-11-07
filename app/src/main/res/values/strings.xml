@@ -27,4 +27,5 @@
     <string name="us_gallon">US Gallon</string>
     <string name="imperial_gallon">Imperial Gallon</string>
     <string name="add_vehicle">Add Vehicle</string>
+    <string name="vehicleDisplayNameUsed">Display Name is already in use</string>
 </resources>
