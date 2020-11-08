@@ -6,209 +6,255 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/buttonAddFillupDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:text="Date"
-        android:selectAllOnFocus="false"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.135" />
+        tools:layout_editor_absoluteY="160dp">
 
-    <EditText
-        android:id="@+id/editTextAddFillUpOdometer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Odometer"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textViewAddFillupVehicleHeader"
-        app:layout_constraintVertical_bias="0.211" />
-
-    <EditText
-        android:id="@+id/editTextTotalCost"
-        android:layout_width="129dp"
-        android:layout_height="42dp"
-        android:ems="10"
-        android:hint="Total Cost"
-        android:inputType="numberDecimal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.226"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.332" />
-
-    <EditText
-        android:id="@+id/editTextAddFillUpUnit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Units"
-        android:inputType="numberDecimal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.432" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:clickable="true"
-        android:onClick="addFillUpClicked"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_add" />
-
-    <Switch
-        android:id="@+id/switchMissedPreviousFillup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Missed Previous Fillup"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.41"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.805" />
-
-    <CheckBox
-        android:id="@+id/checkBoxFillUpDifferentValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="fillUpInDifferentUnitClicked"
-        android:text="Fillup In Different Unit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.348"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.522" />
-
-    <RadioGroup
-        android:id="@+id/radioGroupFillUpFuelUnits"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.322"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.645">
-
-        <RadioButton
-            android:id="@+id/radioButtonFillupLiters"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Liters"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginTop="15dp"
+            android:isScrollContainer="true"
+            android:orientation="vertical">
 
-        <RadioButton
-            android:id="@+id/radioButtonFillUpUSGallon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="US Gallon"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
 
-        <RadioButton
-            android:id="@+id/radioButtonFillUpImperialGallon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Imperial Gallon"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+                <ImageButton
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/previous_vehicle_from_list"
+                    android:src="@mipmap/baseline_navigate_before_black_48dp" />
 
-    </RadioGroup>
+                <TextView
+                    android:id="@+id/textViewAddFillupVehicleHeader"
+                    android:layout_width="216dp"
+                    android:layout_height="34dp"
+                    android:layout_weight="8"
+                    android:gravity="center_horizontal"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.012"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.01" />
+                <ImageButton
+                    android:id="@+id/buttonAddFillUpNextVehicle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/next_vehicle_from_saved_list"
+                    android:src="@mipmap/baseline_navigate_next_black_48dp" />
+            </LinearLayout>
 
-    <Button
-        android:id="@+id/buttonAddFillUpNextVehicle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.993"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.01" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="-60dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/fill_up_date" />
 
-    <TextView
-        android:id="@+id/textViewAddFillupVehicleHeader"
-        android:layout_width="216dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="20dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <Button
+                android:id="@+id/buttonAddFillupDate"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/button_shape"
+                android:ems="10"
+                android:selectAllOnFocus="false"
+                android:shadowColor="#A8A8A8"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+                android:text="@string/today"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/editTextAddFillupCostPerUnit"
-        android:layout_width="159dp"
-        android:layout_height="47dp"
-        android:ems="10"
-        android:hint="Cost Per Unit"
-        android:inputType="numberDecimal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.288"
-        app:layout_constraintStart_toEndOf="@+id/editTextTotalCost"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.327" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="-60dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/odometer" />
 
-    <TextView
-        android:id="@+id/textViewAddFillUpOdometerWarning"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="*Odometer Value is less then previous value"
-        android:textColor="#A82121"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.199" />
+            <EditText
+                android:id="@+id/editTextAddFillUpOdometer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:autofillHints=""
+                android:ems="10"
+                android:gravity="center_horizontal"
+                android:hint="@string/_123456789"
+                android:inputType="number" />
 
-    <Switch
-        android:id="@+id/switchPartialFillup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Partial Fillup"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.32"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.748" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="-60dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/units_defaulted_to" />
+
+            <EditText
+                android:id="@+id/editTextAddFillUpUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:autofillHints=""
+                android:ems="10"
+                android:gravity="center_horizontal"
+                android:hint="@string/_40"
+                android:inputType="numberDecimal" />
+
+            <CheckBox
+                android:id="@+id/checkBoxFillUpDifferentValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:onClick="fillUpInDifferentUnitClicked"
+                android:text="@string/fillup_in_different_unit" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupFillUpFuelUnits"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone">
+
+                <RadioButton
+                    android:id="@+id/radioButtonFillupLiters"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/liters"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonFillUpUSGallon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/us_gallon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonFillUpImperialGallon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/imperial_gallon"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="-35dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="3"
+                    android:gravity="center_horizontal"
+                    android:paddingStart="-50dp"
+                    android:text="@string/total_cost" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="-55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="3"
+                    android:gravity="center_horizontal"
+                    android:paddingStart="-60dp"
+                    android:text="@string/cost_per_unit" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-20dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/editTextTotalCost"
+                    android:layout_width="159dp"
+                    android:layout_height="47dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="30dp"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:gravity="center_horizontal"
+                    android:hint="@string/_50_50"
+                    android:inputType="numberDecimal" />
+
+                <EditText
+                    android:id="@+id/editTextAddFillupCostPerUnit"
+                    android:layout_width="159dp"
+                    android:layout_height="47dp"
+                    android:layout_marginStart="30dp"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:hint="@string/_3_50"
+                    android:inputType="numberDecimal" />
+            </LinearLayout>
+
+            <Switch
+                android:id="@+id/switchMissedPreviousFillup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:text="@string/missed_previous_fillup" />
+
+            <Switch
+                android:id="@+id/switchPartialFillup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/partial_fillup" />
+
+            <TextView
+                android:id="@+id/textViewAddFillUpOdometerWarning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/odometer_value_is_less_then_previous_value"
+                android:textColor="#A82121"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/floatingActionButton"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/button_shape"
+                android:onClick="addFillUpClicked"
+                android:shadowColor="#A8A8A8"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+                android:text="@string/add_fill_up"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

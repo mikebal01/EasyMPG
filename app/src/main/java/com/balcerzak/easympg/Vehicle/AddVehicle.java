@@ -78,7 +78,7 @@ public class AddVehicle extends VehicleBaseActivity {
         boolean isUnique = true;
         ArrayList<VehicleInfoStruct> savedVehicles = _vehicleAdmin.getVehicles();
         for (VehicleInfoStruct savedVehicle : savedVehicles) {
-            if (savedVehicle.getDisplayName().equals(_vehicle.getDisplayName())) {
+            if (savedVehicle.getDisplayName().replace(" ", "").equals(_vehicle.getDisplayName().replace(" ", ""))) {
                 isUnique = false;
                 break;
             }

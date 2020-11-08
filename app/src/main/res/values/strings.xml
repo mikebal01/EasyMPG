@@ -28,4 +28,23 @@
     <string name="imperial_gallon">Imperial Gallon</string>
     <string name="add_vehicle">Add Vehicle</string>
     <string name="vehicleDisplayNameUsed">Display Name is already in use</string>
+    <string name="previous_vehicle_from_list">Previous Vehicle From List</string>
+    <string name="next_vehicle_from_saved_list">Next Vehicle From Saved List</string>
+    <string name="odometer_value_is_less_then_previous_value">*Odometer Value is less then previous value</string>
+    <string name="partial_fillup">Partial Fillup</string>
+    <string name="fillup_in_different_unit">Fillup In Different Unit</string>
+    <string name="missed_previous_fillup">Missed Previous Fillup</string>
+    <string name="units">Units</string>
+    <string name="total_cost">Total Cost</string>
+    <string name="odometer">Odometer</string>
+    <string name="date">Date</string>
+    <string name="today">Today</string>
+    <string name="fill_up_date">Fill Up Date:</string>
+    <string name="cost_per_unit">Cost Per Unit</string>
+    <string name="_50_50">$50.50</string>
+    <string name="_3_50">$3.50</string>
+    <string name="_123456789">123456789</string>
+    <string name="units_defaulted_to">Units Defaulted to</string>
+    <string name="_40">40</string>
+    <string name="add_fill_up">Add Fill Up</string>
 </resources>

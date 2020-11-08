@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -60,7 +61,7 @@ public class FillUpBaseActivity extends Activity {
         _missedPreviousFillUp = findViewById(R.id.switchMissedPreviousFillup);
         _partialFillUp = findViewById(R.id.switchPartialFillup);
 
-        Button vehicleHeaderNext = findViewById(R.id.buttonAddFillUpNextVehicle);
+        ImageButton vehicleHeaderNext = findViewById(R.id.buttonAddFillUpNextVehicle);
         vehicleHeaderNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
