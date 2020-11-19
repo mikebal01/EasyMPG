@@ -23,7 +23,7 @@ public class AddFillUp extends FillUpBaseActivity {
         final boolean isPartialFillUp = _partialFillUp.isChecked();
         final double totalCost = Double.parseDouble(_totalCost.getText().toString());
         final int odometer = Integer.parseInt(_odometer.getText().toString());
-        final String date = _dateSelector.getText().toString();
+        final String date = _day + "-" + _month + "-" + _year;
 
         if(isOdometerValueLowerThenPrevious(currentlySelectedVehicle.getVehiclePK(), odometer))
         {
