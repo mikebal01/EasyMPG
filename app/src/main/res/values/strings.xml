@@ -22,7 +22,7 @@
     <string name="odometer_units">Odometer Units</string>
     <string name="km">KM</string>
     <string name="miles">Miles</string>
-    <string name="default_fill_up_units">Default Fill Up Units</string>
+    <string name="default_fill_up_units">Default Fill Up Units %1$s</string>
     <string name="liters">Liters</string>
     <string name="us_gallon">US Gallon</string>
     <string name="imperial_gallon">Imperial Gallon</string>
@@ -44,7 +44,7 @@
     <string name="_50_50">$50.50</string>
     <string name="_3_50">$3.50</string>
     <string name="_123456789">123456789</string>
-    <string name="units_defaulted_to">Units Defaulted to</string>
+    <string name="units_defaulted_to">Units Defaulted to 1$</string>
     <string name="_40">40</string>
     <string name="add_fill_up">Add Fill Up</string>
 </resources>

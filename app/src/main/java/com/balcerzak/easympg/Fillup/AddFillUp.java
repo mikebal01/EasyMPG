@@ -1,6 +1,8 @@
 package com.balcerzak.easympg.Fillup;
 
+import android.content.Context;
 import android.content.res.Resources;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.RadioGroup;
@@ -14,6 +16,19 @@ import com.balcerzak.easympg.Units.FuelUnits;
 import com.balcerzak.easympg.Vehicle.VehicleInfoStruct;
 
 public class AddFillUp extends FillUpBaseActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        TextView defaultUnitHeader = findViewById(R.id.addFuelDefaultHeader);
+        String defaultResource = getStringByIdName(getApplicationContext(), getCurrentlySelectedVehicle().getDefaultFuelUnit().getStringResource());
+        defaultUnitHeader.setText(String.format(getString(R.string.default_fill_up_units), defaultResource));
+    }
+
+    public static String getStringByIdName(Context context, String idName) {
+        Resources res = context.getResources();
+        return res.getString(res.getIdentifier(idName, "string", context.getPackageName()));
+    }
 
     public void addFillUpClicked(View v){
         final VehicleInfoStruct currentlySelectedVehicle = getCurrentlySelectedVehicle();
