@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -32,6 +34,7 @@ public class FillUpBaseActivity extends Activity {
     private int _vehicleIndex = 0;
     Button _dateSelector;
     int _year, _month, _day;
+    boolean _totalCostSelectedLast = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +79,51 @@ public class FillUpBaseActivity extends Activity {
         _odometer = findViewById(R.id.editTextAddFillUpOdometer);
         _units = findViewById(R.id.editTextAddFillUpUnit);
         _totalCost = findViewById(R.id.editTextTotalCost);
+        _totalCost.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                _totalCostSelectedLast = true;
+                if(_costPerUnit.getText().toString().isEmpty() && _units.getText().toString().matches(".*\\d.*") && String.valueOf(s).matches(".*\\d.*")){
+                    double units = Double.parseDouble(_units.getText().toString());
+                    double totalCost = Double.parseDouble(String.valueOf(s));
+                    _costPerUnit.setText(String.valueOf(units/totalCost));
+                }
+            }
+        });
+
         _costPerUnit = findViewById(R.id.editTextAddFillupCostPerUnit);
+        _costPerUnit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                _totalCostSelectedLast = false;
+                if(_totalCost.getText().toString().isEmpty() && _units.getText().toString().matches(".*\\d.*") && String.valueOf(s).matches(".*\\d.*")){
+                    double units = Double.parseDouble(_units.getText().toString());
+                    double totalCost = Double.parseDouble(String.valueOf(s));
+                    _totalCost.setText(String.valueOf(units*totalCost));
+                }
+            }
+        });
+
         _missedPreviousFillUp = findViewById(R.id.switchMissedPreviousFillup);
         _partialFillUp = findViewById(R.id.switchPartialFillup);
 

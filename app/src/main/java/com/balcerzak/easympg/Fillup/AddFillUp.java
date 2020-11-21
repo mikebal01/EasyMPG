@@ -36,7 +36,7 @@ public class AddFillUp extends FillUpBaseActivity {
         final FuelUnits selectedFuelUnit = getSelectedFuelUnit();
         final boolean isMissedPreviousFillUpChecked = _missedPreviousFillUp.isChecked();
         final boolean isPartialFillUp = _partialFillUp.isChecked();
-        final double totalCost = Double.parseDouble(_totalCost.getText().toString());
+        final double totalCost = getTotalCost();
         final int odometer = Integer.parseInt(_odometer.getText().toString());
         final String date = _day + "-" + _month + "-" + _year;
 
@@ -109,5 +109,13 @@ public class AddFillUp extends FillUpBaseActivity {
         VehicleAdmin vehicleAdmin = new VehicleAdmin(getApplicationContext());
         return (currentOdometer < ((fillUpAdmin.getMaxOdometer(vehiclePk) > 0) ? fillUpAdmin.getMaxOdometer(vehiclePk)
                 : vehicleAdmin.getVehicleById(vehiclePk).getOdometer()));
+    }
+
+    private double getTotalCost(){
+        if(_totalCostSelectedLast){
+            return Double.parseDouble(_totalCost.getText().toString());
+        } else{
+            return  Double.parseDouble(_costPerUnit.getText().toString())*Double.parseDouble(_units.getText().toString());
+        }
     }
 }
